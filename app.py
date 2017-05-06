@@ -71,14 +71,14 @@ def main():
                 quit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    glTranslatef(-0.5,0,0)
-                if event.key == pygame.K_RIGHT:
                     glTranslatef(0.5,0,0)
+                if event.key == pygame.K_RIGHT:
+                    glTranslatef(-0.5,0,0)
 
                 if event.key == pygame.K_UP:
-                    glTranslatef(0,1,0)
-                if event.key == pygame.K_DOWN:
                     glTranslatef(0,-1,0)
+                if event.key == pygame.K_DOWN:
+                    glTranslatef(0,1,0)
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 4:
