@@ -5,40 +5,16 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 
 #Vertices berupa list of tuple
-#Fungsi mengurutkan titik sehingga berlawanan arah jarum jam
-def orderVertices(vertices):
-    length = len(vertices)
-    for index in range(0,length):
-        x = vertices[index]
-        for index2 in range((index+1),length):
-            if not(compareVertex(x,vertices[index2])):
-                temp = x
-                x = vertices[index2]
-                vertices[index2] = temp
-        vertices[index] = x
-
-def compareVertex(v1,v2):
-    if (v1[0] > v2[0]):
-        return True
-    elif (v1[0] == v2[0]):
-        if (v1[1] < v2[1]):
-            return True
-        else:
-            return False
-    else:
-        return False
-
 #Kelas untuk menyimpan data gedung versi 2 dimensi
 class gedung2D:
 
     def __init__(self,nama,vertices):
         self.nama = nama
-        selft.vertices = vertices
+        self.vertices = vertices
 
-    def print2D():
-        orderVertices(vertices)
+    def print2D(self):
         glBegin(GL_POLYGON)
-        for vertex in vertices:
+        for vertex in self.vertices:
             glVertex2fv(vertex)
         glEnd()
 
@@ -55,44 +31,67 @@ def loadFile(kumpulan,namaFile):
         else :
             vertex = ()
             for word in line.split():
-                vertex += (float(word),)
+                vertex += (float(word)/10,)
             iterator -= 1
             verticesTemp.append(vertex)
             if (iterator < 1):
                 kumpulan.append(verticesTemp)
                 first = True
 
-kumpulanGedung = []
-kumpulanPohon = []
-kumpulanJalan = []
-
-loadFile(kumpulanGedung,"resources/gedung.txt")
-loadFile(kumpulanPohon,"resources/pohon.txt")
-loadFile(kumpulanJalan,"resources/jalan.txt")
-
-
+#menampilkan seluruh bentuk berdasarkan kumpulan titik
+def printKumpulan(kumpulan):
+    for vertices in kumpulan:
+        glBegin(GL_POLYGON)
+        for vertex in vertices:
+            glVertex2fv(vertex)
+        glEnd()
 
 
-
-"""
 def main():
+    kumpulanGedung = []
+    kumpulanPohon = []
+    kumpulanJalan = []
+    #migrasi file eksternal ke memori
+    loadFile(kumpulanGedung,"resources/gedung.txt")
+    loadFile(kumpulanPohon,"resources/pohon.txt")
+    loadFile(kumpulanJalan,"resources/jalan.txt")
+    test = gedung2D("test",kumpulanGedung[0])
     pygame.init()
     display = (800,600)
     pygame.display.set_mode(display, DOUBLEBUF|OPENGL)
 
     gluPerspective(45, (display[0]/display[1]), 0.1, 50.0)
 
-    glTranslatef(-268,-236, -50)
+    glTranslatef(-20,-20, -50)
 
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    glTranslatef(-0.5,0,0)
+                if event.key == pygame.K_RIGHT:
+                    glTranslatef(0.5,0,0)
+
+                if event.key == pygame.K_UP:
+                    glTranslatef(0,1,0)
+                if event.key == pygame.K_DOWN:
+                    glTranslatef(0,-1,0)
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 4:
+                    glTranslatef(0,0,1.0)
+
+                if event.button == 5:
+                    glTranslatef(0,0,-1.0)
+
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
-        Cube()
+        printKumpulan(kumpulanGedung)
+        #printKumpulan(kumpulanPohon)
+        #printKumpulan(kumpulanJalan)
         pygame.display.flip()
         pygame.time.wait(10)
 
 main()
-"""
