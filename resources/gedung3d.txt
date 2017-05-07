@@ -27,6 +27,7 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 altim/selatan.jpg
 altim/utara.jpg
 altim/barat.jpg
@@ -42,7 +43,6 @@ altim/atas.jpg
 335 455 50
 276 455 50
 12
-x
 0 1
 1 2
 2 3
@@ -62,6 +62,7 @@ x
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 albar/selatan.jpg
 albar/utara.jpg
 albar/barat.jpg
@@ -96,6 +97,7 @@ albar/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 2cc/selatan.jpg
 2cc/utara.jpg
 2cc/barat.jpg
@@ -130,6 +132,7 @@ albar/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 2cc/selatan.jpg
 2cc/utara.jpg
 2cc/barat.jpg
@@ -164,6 +167,7 @@ albar/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 atmCenter/selatan.jpg
 atmCenter/utara.jpg
 atmCenter/barat.jpg
@@ -198,6 +202,7 @@ atmCenter/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 4labtek/selatan.jpg
 4labtek/utara.jpg
 4labtek/barat.jpg
@@ -232,6 +237,7 @@ atmCenter/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 4labtek/selatan.jpg
 4labtek/utara.jpg
 4labtek/barat.jpg
@@ -266,6 +272,7 @@ atmCenter/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 4labtek/selatan.jpg
 4labtek/utara.jpg
 4labtek/barat.jpg
@@ -300,6 +307,7 @@ atmCenter/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 4labtek/selatan.jpg
 4labtek/utara.jpg
 4labtek/barat.jpg
@@ -334,6 +342,7 @@ atmCenter/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 2gku/selatan.jpg
 2gku/utara.jpg
 2gku/barat.jpg
@@ -368,6 +377,7 @@ atmCenter/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 2gku/selatan.jpg
 2gku/utara.jpg
 2gku/barat.jpg
@@ -402,6 +412,7 @@ atmCenter/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 cadl/selatan.jpg
 cadl/utara.jpg
 cadl/barat.jpg
@@ -436,6 +447,7 @@ cadl/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 pau/selatan.jpg
 pau/utara.jpg
 pau/barat.jpg
@@ -470,6 +482,7 @@ pau/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 4oktagon/selatan.jpg
 4oktagon/utara.jpg
 4oktagon/barat.jpg
@@ -504,6 +517,7 @@ pau/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 4oktagon/selatan.jpg
 4oktagon/utara.jpg
 4oktagon/barat.jpg
@@ -538,6 +552,7 @@ pau/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 4oktagon/selatan.jpg
 4oktagon/utara.jpg
 4oktagon/barat.jpg
@@ -572,6 +587,7 @@ pau/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 4oktagon/selatan.jpg
 4oktagon/utara.jpg
 4oktagon/barat.jpg
@@ -606,6 +622,7 @@ pau/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 cas/selatan.jpg
 cas/utara.jpg
 cas/barat.jpg
@@ -640,6 +657,7 @@ cas/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
+5
 perpus/selatan.jpg
 perpus/utara.jpg
 perpus/barat.jpg

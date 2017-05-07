@@ -1,8 +1,11 @@
 import pygame
 from pygame.locals import *
-
+from PIL import Image
 from OpenGL.GL import *
 from OpenGL.GLU import *
+
+ID = 0
+image = []
 
 #Vertices berupa list of tuple
 #Kelas untuk menyimpan data gedung versi 2 dimensi
@@ -98,11 +101,11 @@ def loadFile(kumpulan, namaFile):
             vertex = ()
             edge = ()
             surface = ()
-            selatan = ""
-            utara = ""
-            barat = ""
-            timur = ""
-            atas = ""
+            selatan = ''
+            utara = ''
+            barat = ''
+            timur = ''
+            atas = ''
             if counter == 1:
                 for word in line.split():
                     vertex += (float(word)/10,)
@@ -123,8 +126,8 @@ def loadFile(kumpulan, namaFile):
                     timur = str(line)
                 elif x == 5:
                     atas = str(line)
+                x += 1
             iterator -= 1
-            x += 1
             if counter == 1:
                 # verticesTemp.append(vertex)
                 verticesTemp += (vertex, )
@@ -153,13 +156,15 @@ def printKumpulan(kumpulan):
 
 
 def main():
+    global ID
+
     # kumpulanGedung = []
     kumpulanGedung3D = []
     # kumpulanPohon = []
     # kumpulanJalan = []
     #migrasi file eksternal ke memori
     # loadFile(kumpulanGedung,"resources/gedung.txt")
-    loadFile(kumpulanGedung3D,"resources/gedung3d.txt")
+    loadFile(kumpulanGedung3D, "resources/gedung3d.txt")
     # loadFile(kumpulanPohon,"resources/pohon.txt")
     # loadFile(kumpulanJalan,"resources/jalan.txt")
     # test = gedung2D("test",kumpulanGedung[0])
