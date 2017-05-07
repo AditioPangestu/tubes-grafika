@@ -13,9 +13,13 @@ ID = 0
 X_AXIS = 0.0
 Y_AXIS = 0.0
 Z_AXIS = 0.0
- 
+
 DIRECTION = 1
- 
+
+#cube
+X_cube = 2.0
+Y_cube = 1.0
+Z_cube = 1.0
  
 def InitGL(Width, Height): 
  
@@ -50,48 +54,60 @@ def DrawGLScene():
         glLoadIdentity()
         glTranslatef(0.0,0.0,-6.0)
  
-        glRotatef(X_AXIS,1.0,0.0,0.0)
-        '''glRotatef(Y_AXIS,0.0,1.0,0.0)
-        glRotatef(Z_AXIS,0.0,0.0,1.0)'''
+        #glRotatef(X_AXIS,1.0,0.0,0.0)
+        glRotatef(Y_AXIS,0.0,1.0,0.0)
+        #glRotatef(Z_AXIS,0.0,0.0,1.0)
  
 #        glBindTexture(GL_TEXTURE_2D, ID)
          
         # Draw Cube (multiple quads)
         glBegin(GL_QUADS);
-        glTexCoord2f(0.0, 0.0); glVertex3f(-1.0, -1.0,  1.0);
-        glTexCoord2f(1.0, 0.0); glVertex3f( 1.0, -1.0,  1.0);
-        glTexCoord2f(1.0, 1.0); glVertex3f( 1.0,  1.0,  1.0);
-        glTexCoord2f(0.0, 1.0); glVertex3f(-1.0,  1.0,  1.0);
-        glTexCoord2f(1.0, 0.0); glVertex3f(-1.0, -1.0, -1.0);
-        glTexCoord2f(1.0, 1.0); glVertex3f(-1.0,  1.0, -1.0);
-        glTexCoord2f(0.0, 1.0); glVertex3f( 1.0,  1.0, -1.0);
-        glTexCoord2f(0.0, 0.0); glVertex3f( 1.0, -1.0, -1.0);
-        glTexCoord2f(0.0, 1.0); glVertex3f(-1.0,  1.0, -1.0);
-        glTexCoord2f(0.0, 0.0); glVertex3f(-1.0,  1.0,  1.0);
-        glTexCoord2f(1.0, 0.0); glVertex3f( 1.0,  1.0,  1.0);
-        glTexCoord2f(1.0, 1.0); glVertex3f( 1.0,  1.0, -1.0);
-        glTexCoord2f(1.0, 1.0); glVertex3f(-1.0, -1.0, -1.0);
-        glTexCoord2f(0.0, 1.0); glVertex3f( 1.0, -1.0, -1.0);
-        glTexCoord2f(0.0, 0.0); glVertex3f( 1.0, -1.0,  1.0);
-        glTexCoord2f(1.0, 0.0); glVertex3f(-1.0, -1.0,  1.0);
-        glTexCoord2f(1.0, 0.0); glVertex3f( 1.0, -1.0, -1.0);
-        glTexCoord2f(1.0, 1.0); glVertex3f( 1.0,  1.0, -1.0);
-        glTexCoord2f(0.0, 1.0); glVertex3f( 1.0,  1.0,  1.0);
-        glTexCoord2f(0.0, 0.0); glVertex3f( 1.0, -1.0,  1.0);
-        glTexCoord2f(0.0, 0.0); glVertex3f(-1.0, -1.0, -1.0);
-        glTexCoord2f(1.0, 0.0); glVertex3f(-1.0, -1.0,  1.0);
-        glTexCoord2f(1.0, 1.0); glVertex3f(-1.0,  1.0,  1.0);
-        glTexCoord2f(0.0, 1.0); glVertex3f(-1.0,  1.0, -1.0);
+        '''FRONT'''
+        glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube, -Y_cube,  Z_cube);
+        glTexCoord2f(1.0, 0.0); glVertex3f( X_cube, -Y_cube,  Z_cube);
+        glTexCoord2f(1.0, 1.0); glVertex3f( X_cube,  Y_cube,  Z_cube);
+        glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube,  Y_cube,  Z_cube);
+        
+        '''BACK'''
+        glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube, -Y_cube, -Z_cube);
+        glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube,  Y_cube, -Z_cube);
+        glTexCoord2f(1.0, 1.0); glVertex3f( X_cube,  Y_cube, -Z_cube);
+        glTexCoord2f(1.0, 0.0); glVertex3f( X_cube, -Y_cube, -Z_cube);
+
+        '''TOP'''
+        glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube,  Y_cube, -Z_cube);
+        glTexCoord2f(1.0, 0.0); glVertex3f(-X_cube,  Y_cube,  Z_cube);
+        glTexCoord2f(1.0, 1.0); glVertex3f( X_cube,  Y_cube,  Z_cube);
+        glTexCoord2f(0.0, 1.0); glVertex3f( X_cube,  Y_cube, -Z_cube);
+
+        '''BOTTOM'''
+        glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube, -Y_cube, -Z_cube);
+        glTexCoord2f(1.0, 0.0); glVertex3f( X_cube, -Y_cube, -Z_cube);
+        glTexCoord2f(1.0, 1.0); glVertex3f( X_cube, -Y_cube,  Z_cube);
+        glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube, -Y_cube,  Z_cube);
+
+        '''RIGHT'''
+        glTexCoord2f(0.0, 0.0); glVertex3f( X_cube, -Y_cube, -Z_cube);
+        glTexCoord2f(1.0, 0.0); glVertex3f( X_cube,  Y_cube, -Z_cube);
+        glTexCoord2f(1.0, 1.0); glVertex3f( X_cube,  Y_cube,  Z_cube);
+        glTexCoord2f(0.0, 1.0); glVertex3f( X_cube, -Y_cube,  Z_cube);
+
+        '''LEFT'''
+        glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube, -Y_cube, -Z_cube);
+        glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube, -Y_cube,  Z_cube);
+        glTexCoord2f(1.0, 1.0); glVertex3f(-X_cube,  Y_cube,  Z_cube);
+        glTexCoord2f(1.0, 0.0); glVertex3f(-X_cube,  Y_cube, -Z_cube);
 	glEnd();
  
         X_AXIS = X_AXIS - 0.05
         Z_AXIS = Z_AXIS - 0.05
+        Y_AXIS = Y_AXIS - 0.05
  
         glutSwapBuffers()
  
  
 def loadImage():
-      image = pygame.image.load('resources/test_image.png')
+      image = pygame.image.load('resources/cc timur/right.jpg')
       ix = image.get_width()
       iy = image.get_height()
 
@@ -109,24 +125,22 @@ def loadImage():
 
       
 def main():
- 
-        global window
-	global ID 
-	
- 
-        glutInit(sys.argv)
-	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_ALPHA | GLUT_DEPTH)
-	glutInitWindowSize(640,480)
-        glutInitWindowPosition(200,200)
+    global window
+    global ID
 
-        window = glutCreateWindow('OpenGL Python Textured Cube')
- 
-        glutDisplayFunc(DrawGLScene)
-        glutIdleFunc(DrawGLScene)
-        glutKeyboardFunc(keyPressed)
-        InitGL(640, 480)
-	loadImage()
-        glutMainLoop()
+    glutInit(sys.argv)
+    glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_ALPHA | GLUT_DEPTH)
+    glutInitWindowSize(640,480)
+    glutInitWindowPosition(200,200)
+
+    window = glutCreateWindow('OpenGL Python Textured Cube')
+
+    glutDisplayFunc(DrawGLScene)
+    glutIdleFunc(DrawGLScene)
+    glutKeyboardFunc(keyPressed)
+    InitGL(640, 480)
+    loadImage()
+    glutMainLoop()
  
 if __name__ == "__main__":
         main() 
