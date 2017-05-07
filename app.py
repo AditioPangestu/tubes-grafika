@@ -87,6 +87,8 @@ def loadFile(kumpulan, namaFile):
     counter = 1
     x = 1
     for line in f:
+        line = line.split('\n')[0]
+        print line
         if first:
             iterator = int(line)
             # verticesTemp = []
@@ -97,15 +99,15 @@ def loadFile(kumpulan, namaFile):
                 edgesTemp = ()
                 surfacesTemp = ()
             first = False
-        else :
-            vertex = ()
-            edge = ()
-            surface = ()
             selatan = ''
             utara = ''
             barat = ''
             timur = ''
             atas = ''
+        else :
+            vertex = ()
+            edge = ()
+            surface = ()
             if counter == 1:
                 for word in line.split():
                     vertex += (float(word)/10,)

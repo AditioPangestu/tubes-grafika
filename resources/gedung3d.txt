@@ -343,11 +343,11 @@ atmCenter/atas.jpg
 2 3 7 6
 3 0 4 7
 5
-2gku/selatan.jpg
-2gku/utara.jpg
-2gku/barat.jpg
-2gku/timur.jpg
-2gku/atas.jpg
+gkuBarat/selatan.jpg
+gkuBarat/utara.jpg
+gkuBarat/barat.jpg
+gkuBarat/timur.jpg
+gkuBarat/atas.jpg
 8
 365 273 0
 365 308 0
@@ -378,11 +378,11 @@ atmCenter/atas.jpg
 2 3 7 6
 3 0 4 7
 5
-2gku/selatan.jpg
-2gku/utara.jpg
-2gku/barat.jpg
-2gku/timur.jpg
-2gku/atas.jpg
+gkuTimur/selatan.jpg
+gkuTimur/utara.jpg
+gkuTimur/barat.jpg
+gkuTimur/timur.jpg
+gkuTimur/atas.jpg
 8
 314 44 0
 359 44 0
