@@ -47,13 +47,10 @@ def keyPressed(*args):
  
 def DrawGLScene():
         global X_AXIS,Y_AXIS,Z_AXIS
-        global DIRECTION
  
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
- 
         glLoadIdentity()
         glTranslatef(0.0,0.0,-6.0)
- 
         #glRotatef(X_AXIS,1.0,0.0,0.0)
         glRotatef(Y_AXIS,0.0,1.0,0.0)
         #glRotatef(Z_AXIS,0.0,0.0,1.0)
