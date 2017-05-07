@@ -27,6 +27,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+altim/selatan.jpg
+altim/utara.jpg
+altim/barat.jpg
+altim/timur.jpg
+altim/atas.jpg
 8
 276 423 0
 335 423 0
@@ -37,6 +42,7 @@
 335 455 50
 276 455 50
 12
+x
 0 1
 1 2
 2 3
@@ -56,6 +62,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+albar/selatan.jpg
+albar/utara.jpg
+albar/barat.jpg
+albar/timur.jpg
+albar/atas.jpg
 8
 266 328 0
 266 344 0
@@ -85,6 +96,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+2cc/selatan.jpg
+2cc/utara.jpg
+2cc/barat.jpg
+2cc/timur.jpg
+2cc/atas.jpg
 8
 196 328 0
 239 328 0
@@ -114,6 +130,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+2cc/selatan.jpg
+2cc/utara.jpg
+2cc/barat.jpg
+2cc/timur.jpg
+2cc/atas.jpg
 8
 84 391 0
 171 391 0
@@ -143,6 +164,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+atmCenter/selatan.jpg
+atmCenter/utara.jpg
+atmCenter/barat.jpg
+atmCenter/timur.jpg
+atmCenter/atas.jpg
 8
 81 317 0
 171 317 0
@@ -172,6 +198,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+4labtek/selatan.jpg
+4labtek/utara.jpg
+4labtek/barat.jpg
+4labtek/timur.jpg
+4labtek/atas.jpg
 8
 143 274 0
 143 298 0
@@ -201,6 +232,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+4labtek/selatan.jpg
+4labtek/utara.jpg
+4labtek/barat.jpg
+4labtek/timur.jpg
+4labtek/atas.jpg
 8
 143 236 0
 143 260 0
@@ -230,6 +266,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+4labtek/selatan.jpg
+4labtek/utara.jpg
+4labtek/barat.jpg
+4labtek/timur.jpg
+4labtek/atas.jpg
 8
 254 236 0
 254 260 0
@@ -259,6 +300,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+4labtek/selatan.jpg
+4labtek/utara.jpg
+4labtek/barat.jpg
+4labtek/timur.jpg
+4labtek/atas.jpg
 8
 254 274 0
 254 298 0
@@ -288,6 +334,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+2gku/selatan.jpg
+2gku/utara.jpg
+2gku/barat.jpg
+2gku/timur.jpg
+2gku/atas.jpg
 8
 76 277 0
 112 277 0
@@ -317,6 +368,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+2gku/selatan.jpg
+2gku/utara.jpg
+2gku/barat.jpg
+2gku/timur.jpg
+2gku/atas.jpg
 8
 365 273 0
 365 308 0
@@ -346,6 +402,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+cadl/selatan.jpg
+cadl/utara.jpg
+cadl/barat.jpg
+cadl/timur.jpg
+cadl/atas.jpg
 8
 314 44 0
 359 44 0
@@ -375,13 +436,18 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+pau/selatan.jpg
+pau/utara.jpg
+pau/barat.jpg
+pau/timur.jpg
+pau/atas.jpg
 8
 262 47 0
-306	47 0
+306 47 0
 306 101 0
 262 101 0
 262 47 50
-306	47 50
+306 47 50
 306 101 50
 262 101 50
 12
@@ -404,6 +470,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+4oktagon/selatan.jpg
+4oktagon/utara.jpg
+4oktagon/barat.jpg
+4oktagon/timur.jpg
+4oktagon/atas.jpg
 8
 160 128 0
 210 128 0
@@ -433,6 +504,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+4oktagon/selatan.jpg
+4oktagon/utara.jpg
+4oktagon/barat.jpg
+4oktagon/timur.jpg
+4oktagon/atas.jpg
 8
 160 165 0
 160 204 0
@@ -462,6 +538,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+4oktagon/selatan.jpg
+4oktagon/utara.jpg
+4oktagon/barat.jpg
+4oktagon/timur.jpg
+4oktagon/atas.jpg
 8
 275 140 0
 295 158 0
@@ -491,6 +572,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+4oktagon/selatan.jpg
+4oktagon/utara.jpg
+4oktagon/barat.jpg
+4oktagon/timur.jpg
+4oktagon/atas.jpg
 8
 277 164 0
 314 164 0
@@ -520,6 +606,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+cas/selatan.jpg
+cas/utara.jpg
+cas/barat.jpg
+cas/timur.jpg
+cas/atas.jpg
 8
 140 31 0
 169 31 0
@@ -549,6 +640,11 @@
 1 2 6 5
 2 3 7 6
 3 0 4 7
+perpus/selatan.jpg
+perpus/utara.jpg
+perpus/barat.jpg
+perpus/timur.jpg
+perpus/atas.jpg
 8
 192 35 0
 227 35 0
