@@ -98,11 +98,11 @@ def loadFile(kumpulan, namaFile):
             vertex = ()
             edge = ()
             surface = ()
-            selatan = ()
-            utara = ()
-            barat = ()
-            timur = ()
-            atas = ()
+            selatan = ""
+            utara = ""
+            barat = ""
+            timur = ""
+            atas = ""
             if counter == 1:
                 for word in line.split():
                     vertex += (float(word)/10,)
@@ -114,15 +114,15 @@ def loadFile(kumpulan, namaFile):
                     surface += (int(word),)
             elif counter == 4:
                 if x == 1:
-                    selatan += line
+                    selatan = str(line)
                 elif x == 2:
-                    utara += line
+                    utara = str(line)
                 elif x == 3:
-                    barat += line
+                    barat = str(line)
                 elif x == 4:
-                    timur += line
+                    timur = str(line)
                 elif x == 5:
-                    atas += line
+                    atas = str(line)
             iterator -= 1
             x += 1
             if counter == 1:
