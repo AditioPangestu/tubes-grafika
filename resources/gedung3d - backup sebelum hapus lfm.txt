@@ -170,6 +170,40 @@ atmCenter/barat.jpg
 atmCenter/timur.jpg
 atmCenter/atas.jpg
 8
+81 317 0
+171 317 0
+171 379 0
+81 379 0
+81 317 50
+171 317 50
+171 379 50
+81 379 50
+12
+0 1
+1 2
+2 3
+3 0
+4 5
+5 6
+6 7
+7 4
+0 4
+1 5
+2 6
+3 7
+6
+0 1 2 3
+4 5 6 7
+0 1 5 4
+1 2 6 5
+2 3 7 6
+3 0 4 7
+4labtek/selatan.jpg
+4labtek/utara.jpg
+4labtek/barat.jpg
+4labtek/timur.jpg
+4labtek/atas.jpg
+8
 143 274 0
 143 298 0
 239 298 0
@@ -300,11 +334,11 @@ atmCenter/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
-4labtek/selatan.jpg
-4labtek/utara.jpg
-4labtek/barat.jpg
-4labtek/timur.jpg
-4labtek/atas.jpg
+2gku/selatan.jpg
+2gku/utara.jpg
+2gku/barat.jpg
+2gku/timur.jpg
+2gku/atas.jpg
 8
 76 277 0
 112 277 0
@@ -368,11 +402,11 @@ atmCenter/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
-2gku/selatan.jpg
-2gku/utara.jpg
-2gku/barat.jpg
-2gku/timur.jpg
-2gku/atas.jpg
+cadl/selatan.jpg
+cadl/utara.jpg
+cadl/barat.jpg
+cadl/timur.jpg
+cadl/atas.jpg
 8
 314 44 0
 359 44 0
@@ -402,11 +436,11 @@ atmCenter/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
-cadl/selatan.jpg
-cadl/utara.jpg
-cadl/barat.jpg
-cadl/timur.jpg
-cadl/atas.jpg
+pau/selatan.jpg
+pau/utara.jpg
+pau/barat.jpg
+pau/timur.jpg
+pau/atas.jpg
 8
 262 47 0
 306 47 0
@@ -436,11 +470,11 @@ cadl/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
-pau/selatan.jpg
-pau/utara.jpg
-pau/barat.jpg
-pau/timur.jpg
-pau/atas.jpg
+4oktagon/selatan.jpg
+4oktagon/utara.jpg
+4oktagon/barat.jpg
+4oktagon/timur.jpg
+4oktagon/atas.jpg
 8
 160 128 0
 210 128 0
@@ -572,11 +606,11 @@ pau/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
-4oktagon/selatan.jpg
-4oktagon/utara.jpg
-4oktagon/barat.jpg
-4oktagon/timur.jpg
-4oktagon/atas.jpg
+cas/selatan.jpg
+cas/utara.jpg
+cas/barat.jpg
+cas/timur.jpg
+cas/atas.jpg
 8
 140 31 0
 169 31 0
@@ -606,11 +640,11 @@ pau/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
-cas/selatan.jpg
-cas/utara.jpg
-cas/barat.jpg
-cas/timur.jpg
-cas/atas.jpg
+perpus/selatan.jpg
+perpus/utara.jpg
+perpus/barat.jpg
+perpus/timur.jpg
+perpus/atas.jpg
 8
 192 35 0
 227 35 0
@@ -640,8 +674,3 @@ cas/atas.jpg
 1 2 6 5
 2 3 7 6
 3 0 4 7
-perpus/selatan.jpg
-perpus/utara.jpg
-perpus/barat.jpg
-perpus/timur.jpg
-perpus/atas.jpg
