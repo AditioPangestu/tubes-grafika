@@ -6,7 +6,6 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 
 kumpulanGedung3D = []
-ID = 0
 
 #Kelas untuk menyimpan gambar dari file ke memori
 class Gambar:
@@ -62,6 +61,7 @@ def loadImage(filename = ''):
     return Gambar(pygame.image.tostring(image, "RGBA", 1), ix, iy)
 
 def drawImage(image = None):
+    ID = 0
     glBindTexture(GL_TEXTURE_2D, ID)
     glPixelStorei(GL_UNPACK_ALIGNMENT,1)
     glTexImage2D(GL_TEXTURE_2D, 0, 3, image.x, image.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.image)
@@ -78,7 +78,7 @@ def loadFile(namafile = ''):
     global kumpulanGedung3D
 
     f = open(namafile, "r")
-    mode = 1
+    mode = 1 # lagi load vertex atau edge atau surface atau image
     newMode = True
     rowRemaining = 1
     print('Loading', end = '')
@@ -175,7 +175,7 @@ def main():
         for gedung in kumpulanGedung3D:
             gedung.print3D()
         pygame.display.flip()
-        pygame.time.wait(10)
+        pygame.time.wait(100)
 
 # main program
 main()
