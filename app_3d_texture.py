@@ -91,7 +91,7 @@ def DrawGLScene():
  
  
 def loadImage():
-      image = pygame.image.load('test_image.png')
+      image = pygame.image.load('resources/test_image.png')
       ix = image.get_width()
       iy = image.get_height()
 
