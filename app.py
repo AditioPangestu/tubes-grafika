@@ -20,6 +20,12 @@ class gedung2D:
             glVertex2fv(vertex)
         glEnd()
 
+class Gambar:
+    def __init__(self, image, x, y):
+        self.image = image
+        self.x = x
+        self.y = y
+
 class gedung3D:
     def __init__(self, vertices, edges, surfaces, selatan, utara, barat, timur, atas):
         self.vertices = vertices
@@ -35,15 +41,15 @@ class gedung3D:
         counter = 1
         for surface in self.surfaces:
             if counter == 2:
-                loadImage('resources/' + self.atas)
+                drawImage(self.atas)
             elif counter == 3:
-                loadImage('resources/' + self.utara)
+                drawImage(self.utara)
             elif counter == 4:
-                loadImage('resources/' + self.barat)
+                drawImage(self.barat)
             elif counter == 5:
-                loadImage('resources/' + self.selatan)
+                drawImage(self.selatan)
             elif counter == 6:
-                loadImage('resources/' + self.timur)
+                drawImage(self.timur)
             glBegin(GL_QUADS)
             x = 0
             for vertex in surface:
@@ -60,15 +66,15 @@ class gedung3D:
         glEnd()
 
 def loadImage(filename):
-      image = pygame.image.load(str(filename))
+      image = pygame.image.load('resources/' + filename)
       ix = image.get_width()
       iy = image.get_height()
+      return Gambar(pygame.image.tostring(image, "RGBA", 1), ix, iy)
 
-      image = pygame.image.tostring(image, "RGBA", 1)
-
+def drawImage(image):
       glBindTexture(GL_TEXTURE_2D, ID)
       glPixelStorei(GL_UNPACK_ALIGNMENT,1)
-      glTexImage2D(GL_TEXTURE_2D, 0, 3, ix, iy, 0, GL_RGBA, GL_UNSIGNED_BYTE, image)
+      glTexImage2D(GL_TEXTURE_2D, 0, 3, image.x, image.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.image)
       glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP)
       glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP)
       glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)
@@ -76,8 +82,6 @@ def loadImage(filename):
       glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
       glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
       glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
-
-      return ID
 
 #Menyimpan kumpulan titik pada memory
 def loadFile(kumpulan, namaFile):
@@ -119,15 +123,15 @@ def loadFile(kumpulan, namaFile):
                     surface += (int(word),)
             elif counter == 4:
                 if x == 1:
-                    selatan = str(line)
+                    selatan = loadImage(str(line))
                 elif x == 2:
-                    utara = str(line)
+                    utara = loadImage(str(line))
                 elif x == 3:
-                    barat = str(line)
+                    barat = loadImage(str(line))
                 elif x == 4:
-                    timur = str(line)
+                    timur = loadImage(str(line))
                 elif x == 5:
-                    atas = str(line)
+                    atas = loadImage(str(line))
                 x += 1
             iterator -= 1
             if counter == 1:
