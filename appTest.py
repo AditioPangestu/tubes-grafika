@@ -41,8 +41,8 @@ def InitGL(Width, Height):
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)    
  
 def keyPressed(*args):
-        if args[0] == ESCAPE:
-                sys.exit()
+    if args[0] == ESCAPE:
+        sys.exit()
  
  
 def DrawGLScene():
@@ -152,4 +152,4 @@ def main():
     glutMainLoop()
  
 if __name__ == "__main__":
-        main() 
+        main()
