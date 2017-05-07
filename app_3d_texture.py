@@ -20,7 +20,9 @@ DIRECTION = 1
 X_cube = 2.0
 Y_cube = 1.0
 Z_cube = 1.0
- 
+
+image = []
+
 def InitGL(Width, Height): 
  
         glClearColor(0.0, 0.0, 0.0, 0.0)
@@ -57,62 +59,70 @@ def DrawGLScene():
         #glRotatef(X_AXIS,1.0,0.0,0.0)
         glRotatef(Y_AXIS,0.0,1.0,0.0)
         #glRotatef(Z_AXIS,0.0,0.0,1.0)
- 
-#        glBindTexture(GL_TEXTURE_2D, ID)
          
         # Draw Cube (multiple quads)
-        glBegin(GL_QUADS);
+        loadImage('resources/cc timur/right.jpg')
         '''FRONT'''
+        glBegin(GL_QUADS);
         glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube, -Y_cube,  Z_cube);
         glTexCoord2f(1.0, 0.0); glVertex3f( X_cube, -Y_cube,  Z_cube);
         glTexCoord2f(1.0, 1.0); glVertex3f( X_cube,  Y_cube,  Z_cube);
         glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube,  Y_cube,  Z_cube);
-        
+        glEnd();
+
         '''BACK'''
+        loadImage('resources/cc timur/left.jpg')
+        glBegin(GL_QUADS);
         glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube, -Y_cube, -Z_cube);
         glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube,  Y_cube, -Z_cube);
         glTexCoord2f(1.0, 1.0); glVertex3f( X_cube,  Y_cube, -Z_cube);
         glTexCoord2f(1.0, 0.0); glVertex3f( X_cube, -Y_cube, -Z_cube);
+        glEnd();
+ #        '''TOP'''
+ #        glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube,  Y_cube, -Z_cube);
+ #        glTexCoord2f(1.0, 0.0); glVertex3f(-X_cube,  Y_cube,  Z_cube);
+ #        glTexCoord2f(1.0, 1.0); glVertex3f( X_cube,  Y_cube,  Z_cube);
+ #        glTexCoord2f(0.0, 1.0); glVertex3f( X_cube,  Y_cube, -Z_cube);
 
-        '''TOP'''
-        glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube,  Y_cube, -Z_cube);
-        glTexCoord2f(1.0, 0.0); glVertex3f(-X_cube,  Y_cube,  Z_cube);
-        glTexCoord2f(1.0, 1.0); glVertex3f( X_cube,  Y_cube,  Z_cube);
-        glTexCoord2f(0.0, 1.0); glVertex3f( X_cube,  Y_cube, -Z_cube);
-
-        '''BOTTOM'''
-        glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube, -Y_cube, -Z_cube);
-        glTexCoord2f(1.0, 0.0); glVertex3f( X_cube, -Y_cube, -Z_cube);
-        glTexCoord2f(1.0, 1.0); glVertex3f( X_cube, -Y_cube,  Z_cube);
-        glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube, -Y_cube,  Z_cube);
+ #        '''BOTTOM'''
+ #        glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube, -Y_cube, -Z_cube);
+ #        glTexCoord2f(1.0, 0.0); glVertex3f( X_cube, -Y_cube, -Z_cube);
+ #        glTexCoord2f(1.0, 1.0); glVertex3f( X_cube, -Y_cube,  Z_cube);
+ #        glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube, -Y_cube,  Z_cube);
 
         '''RIGHT'''
+        loadImage('resources/cc timur/back.jpg')
+        glBegin(GL_QUADS);
         glTexCoord2f(0.0, 0.0); glVertex3f( X_cube, -Y_cube,  Z_cube);
         glTexCoord2f(1.0, 0.0); glVertex3f( X_cube, -Y_cube, -Z_cube);
         glTexCoord2f(1.0, 1.0); glVertex3f( X_cube,  Y_cube, -Z_cube);
         glTexCoord2f(0.0, 1.0); glVertex3f( X_cube,  Y_cube,  Z_cube);
+        glEnd();
 
         '''LEFT'''
+        loadImage('resources/cc timur/front.jpg')
+        glBegin(GL_QUADS);
         glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube, -Y_cube, Z_cube);
         glTexCoord2f(1.0, 0.0); glVertex3f(-X_cube, -Y_cube, -Z_cube);
         glTexCoord2f(1.0, 1.0); glVertex3f(-X_cube,  Y_cube, -Z_cube);
         glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube,  Y_cube, Z_cube);
-	glEnd();
+        glEnd();
  
-        X_AXIS = X_AXIS - 0.05
-        Z_AXIS = Z_AXIS - 0.05
-        Y_AXIS = Y_AXIS - 0.05
+        X_AXIS = X_AXIS - 2
+        Z_AXIS = Z_AXIS - 2
+        Y_AXIS = Y_AXIS - 2
  
         glutSwapBuffers()
  
  
-def loadImage():
-      image = pygame.image.load('resources/cc timur/right.jpg')
+def loadImage(filename):
+      image = pygame.image.load(str(filename))
       ix = image.get_width()
       iy = image.get_height()
 
       image = pygame.image.tostring(image, "RGBA", 1)
 
+      glBindTexture(GL_TEXTURE_2D, ID)
       glPixelStorei(GL_UNPACK_ALIGNMENT,1)
       glTexImage2D(GL_TEXTURE_2D, 0, 3, ix, iy, 0, GL_RGBA, GL_UNSIGNED_BYTE, image)
       glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP)
@@ -123,6 +133,7 @@ def loadImage():
       glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
       glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
 
+      return ID
       
 def main():
     global window
@@ -139,7 +150,7 @@ def main():
     glutIdleFunc(DrawGLScene)
     glutKeyboardFunc(keyPressed)
     InitGL(640, 480)
-    loadImage()
+    loadImage('resources/cc timur/right.jpg')
     glutMainLoop()
  
 if __name__ == "__main__":
