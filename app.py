@@ -7,7 +7,6 @@ from OpenGL.GLU import *
 #Vertices berupa list of tuple
 #Kelas untuk menyimpan data gedung versi 2 dimensi
 class gedung2D:
-
     def __init__(self,nama,vertices):
         self.nama = nama
         self.vertices = vertices
@@ -20,7 +19,7 @@ class gedung2D:
 
 #Menyimpan kumpulan titik pada memory
 def loadFile(kumpulan,namaFile):
-    f = open(namaFile,"r")
+    f = open(namaFile, "r")
     first = True
     iterator = 0
     for line in f:
@@ -57,12 +56,12 @@ def main():
     loadFile(kumpulanJalan,"resources/jalan.txt")
     test = gedung2D("test",kumpulanGedung[0])
     pygame.init()
-    display = (800,600)
+    display = (800, 600)
     pygame.display.set_mode(display, DOUBLEBUF|OPENGL)
 
-    gluPerspective(45, (display[0]/display[1]), 0.1, 50.0)
+    gluPerspective(45, (display[0]/display[1]), 0.1, 75.0)
 
-    glTranslatef(-20,-20, -50)
+    glTranslatef(-20, -25, -75)
 
     while True:
         for event in pygame.event.get():
@@ -71,21 +70,31 @@ def main():
                 quit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    glTranslatef(0.5,0,0)
+                    glTranslatef(0.5, 0, 0)
                 if event.key == pygame.K_RIGHT:
-                    glTranslatef(-0.5,0,0)
+                    glTranslatef(-0.5, 0, 0)
 
                 if event.key == pygame.K_UP:
-                    glTranslatef(0,-1,0)
+                    glTranslatef(0, -1, 0)
                 if event.key == pygame.K_DOWN:
-                    glTranslatef(0,1,0)
+                    glTranslatef(0, 1, 0)
+
+                if event.key == pygame.K_a:
+                    glRotatef(5, 0, -1, 0)
+                if event.key == pygame.K_d:
+                    glRotatef(5, 0, 1, 0)
+
+                if event.key == pygame.K_w:
+                    glRotatef(5, -1, 0, 0)
+                if event.key == pygame.K_s:
+                    glRotatef(5, 1, 0, 0)
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 4:
-                    glTranslatef(0,0,1.0)
+                    glTranslatef(0, 0, 1.0)
 
                 if event.button == 5:
-                    glTranslatef(0,0,-1.0)
+                    glTranslatef(0, 0, -1.0)
 
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
         printKumpulan(kumpulanGedung)
