@@ -87,16 +87,16 @@ def DrawGLScene():
         glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube, -Y_cube,  Z_cube);
 
         '''RIGHT'''
-        glTexCoord2f(0.0, 0.0); glVertex3f( X_cube, -Y_cube, -Z_cube);
-        glTexCoord2f(1.0, 0.0); glVertex3f( X_cube,  Y_cube, -Z_cube);
-        glTexCoord2f(1.0, 1.0); glVertex3f( X_cube,  Y_cube,  Z_cube);
-        glTexCoord2f(0.0, 1.0); glVertex3f( X_cube, -Y_cube,  Z_cube);
+        glTexCoord2f(0.0, 0.0); glVertex3f( X_cube, -Y_cube,  Z_cube);
+        glTexCoord2f(1.0, 0.0); glVertex3f( X_cube, -Y_cube, -Z_cube);
+        glTexCoord2f(1.0, 1.0); glVertex3f( X_cube,  Y_cube, -Z_cube);
+        glTexCoord2f(0.0, 1.0); glVertex3f( X_cube,  Y_cube,  Z_cube);
 
         '''LEFT'''
-        glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube, -Y_cube, -Z_cube);
-        glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube, -Y_cube,  Z_cube);
-        glTexCoord2f(1.0, 1.0); glVertex3f(-X_cube,  Y_cube,  Z_cube);
-        glTexCoord2f(1.0, 0.0); glVertex3f(-X_cube,  Y_cube, -Z_cube);
+        glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube, -Y_cube, Z_cube);
+        glTexCoord2f(1.0, 0.0); glVertex3f(-X_cube, -Y_cube, -Z_cube);
+        glTexCoord2f(1.0, 1.0); glVertex3f(-X_cube,  Y_cube, -Z_cube);
+        glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube,  Y_cube, Z_cube);
 	glEnd();
  
         X_AXIS = X_AXIS - 0.05
