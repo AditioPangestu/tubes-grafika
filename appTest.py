@@ -23,7 +23,7 @@ Z_cube = 1.0
 
 image = []
 
-def InitGL(Width, Height): 
+def InitGL(Width, Height):
     glClearColor(0.0, 0.0, 0.0, 0.0)
     glClearDepth(1.0) 
     glDepthFunc(GL_LESS)
@@ -33,32 +33,28 @@ def InitGL(Width, Height):
     glLoadIdentity()
     gluPerspective(45.0, float(Width)/float(Height), 0.1, 100.0)
     glMatrixMode(GL_MODELVIEW)
-
     # initialize texture mapping
     glEnable(GL_TEXTURE_2D)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
-    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)    
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
  
 def keyPressed(*args):
-        if args[0] == ESCAPE:
-                sys.exit()
+    if args[0] == ESCAPE:
+        sys.exit()
  
  
 def DrawGLScene():
         global X_AXIS,Y_AXIS,Z_AXIS
-        global DIRECTION
  
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
- 
         glLoadIdentity()
         glTranslatef(0.0,0.0,-6.0)
- 
         #glRotatef(X_AXIS,1.0,0.0,0.0)
         glRotatef(Y_AXIS,0.0,1.0,0.0)
         #glRotatef(Z_AXIS,0.0,0.0,1.0)
          
-        # Draw Cube (multiple quads)
+       # Draw Cube (multiple quads)
         loadImage('resources/2cc/selatan.jpg')
         '''SELATAN'''
         glBegin(GL_QUADS);
@@ -148,7 +144,11 @@ def main():
     glutIdleFunc(DrawGLScene)
     glutKeyboardFunc(keyPressed)
     InitGL(640, 480)
+<<<<<<< HEAD:app_3d_texture.py
+=======
+    # loadImage('resources/2cc/barat.jpg')
+>>>>>>> da6cd1e59d18253c53bc18e5d0f9483f9bee2256:appTest.py
     glutMainLoop()
  
 if __name__ == "__main__":
-        main() 
+        main()

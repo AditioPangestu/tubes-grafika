@@ -1,27 +1,22 @@
+from __future__ import print_function
 import pygame
 from pygame.locals import *
 from PIL import Image
 from OpenGL.GL import *
 from OpenGL.GLU import *
 
-ID = 0
-image = []
+kumpulanGedung3D = []
 
-#Vertices berupa list of tuple
-#Kelas untuk menyimpan data gedung versi 2 dimensi
-class gedung2D:
-    def __init__(self,nama,vertices):
-        self.nama = nama
-        self.vertices = vertices
+#Kelas untuk menyimpan gambar dari file ke memori
+class Gambar:
+    def __init__(self, image = None, x = 0, y = 0):
+        self.image = image
+        self.x = x
+        self.y = y
 
-    def print2D(self):
-        glBegin(GL_POLYGON)
-        for vertex in self.vertices:
-            glVertex2fv(vertex)
-        glEnd()
-
+#Kelas untuk menyimpan data gedung versi 3 dimensi
 class gedung3D:
-    def __init__(self, vertices, edges, surfaces, selatan, utara, barat, timur, atas):
+    def __init__(self, vertices = [], edges = [], surfaces = [], selatan = None, utara = None, barat = None, timur = None, atas = None):
         self.vertices = vertices
         self.edges = edges
         self.surfaces = surfaces
@@ -34,193 +29,153 @@ class gedung3D:
     def print3D(self):
         counter = 1
         for surface in self.surfaces:
+            # siapin gambarnya
             if counter == 2:
-                loadImage('resources/' + self.atas)
+                drawImage(self.atas)
             elif counter == 3:
-                loadImage('resources/' + self.utara)
+                drawImage(self.utara)
             elif counter == 4:
-                loadImage('resources/' + self.barat)
+                drawImage(self.barat)
             elif counter == 5:
-                loadImage('resources/' + self.selatan)
+                drawImage(self.selatan)
             elif counter == 6:
-                loadImage('resources/' + self.timur)
-            glBegin(GL_QUADS)
-            x = 0
-            for vertex in surface:
-                x += 1
-                # glColor3fv(colors[x])
-                glVertex3fv(self.vertices[vertex])
-            counter += 1
-            glEnd()
-
+                drawImage(self.timur)
+            # tempel ke koordinat
+            if counter != 1:
+                glBegin(GL_QUADS)
+                for vertex in surface:
+                    glVertex3fv(self.vertices[vertex])
+                counter += 1
+                glEnd()
+        # gambar rusuk kubus (?)
         glBegin(GL_LINES)
         for edge in self.edges:
             for vertex in edge:
                 glVertex3fv(self.vertices[vertex])
         glEnd()
 
-def loadImage(filename):
-      image = pygame.image.load(str(filename))
-      ix = image.get_width()
-      iy = image.get_height()
+def loadImage(filename = ''):
+    image = pygame.image.load('resources/' + filename)
+    ix = image.get_width()
+    iy = image.get_height()
+    return Gambar(pygame.image.tostring(image, "RGBA", 1), ix, iy)
 
-      image = pygame.image.tostring(image, "RGBA", 1)
-
-      glBindTexture(GL_TEXTURE_2D, ID)
-      glPixelStorei(GL_UNPACK_ALIGNMENT,1)
-      glTexImage2D(GL_TEXTURE_2D, 0, 3, ix, iy, 0, GL_RGBA, GL_UNSIGNED_BYTE, image)
-      glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP)
-      glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP)
-      glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)
-      glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT)
-      glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
-      glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
-      glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
-
-      return ID
+def drawImage(image = None):
+    ID = 0
+    glBindTexture(GL_TEXTURE_2D, ID)
+    glPixelStorei(GL_UNPACK_ALIGNMENT,1)
+    glTexImage2D(GL_TEXTURE_2D, 0, 3, image.x, image.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.image)
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP)
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP)
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT)
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT)
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
 
 #Menyimpan kumpulan titik pada memory
-def loadFile(kumpulan, namaFile):
-    f = open(namaFile, "r")
-    first = True
-    iterator = 0
-    counter = 1
-    x = 1
+def loadFile(namafile = ''):
+    global kumpulanGedung3D
+
+    f = open(namafile, "r")
+    mode = 1 # lagi load vertex atau edge atau surface atau image
+    newMode = True
+    rowRemaining = 1
+    print('Loading', end = '')
     for line in f:
+        print('.', end = '')
         line = line.split('\n')[0]
-        print line
-        if first:
-            iterator = int(line)
-            # verticesTemp = []
-            # edgesTemp = []
-            # surfacesTemp = []
-            if counter == 1:
-                verticesTemp = ()
-                edgesTemp = ()
-                surfacesTemp = ()
-            first = False
-            selatan = ''
-            utara = ''
-            barat = ''
-            timur = ''
-            atas = ''
+        if newMode:
+            rowRemaining = int(line)
+            if mode == 1:
+                vertices = []
+                edges = []
+                surfaces = []
+            selatan = None
+            utara = None
+            barat = None
+            timur = None
+            atas = None
+            newMode = False
         else :
-            vertex = ()
-            edge = ()
-            surface = ()
-            if counter == 1:
+            if mode == 1:
+                temp = []
                 for word in line.split():
-                    vertex += (float(word)/10,)
-            elif counter == 2:
+                    temp.append(float(word) / 10)
+                vertices.append(tuple(temp))
+            elif mode == 2:
+                temp = []
                 for word in line.split():
-                    edge += (int(word),)
-            elif counter == 3:
+                    temp.append(int(word))
+                edges.append(temp)
+            elif mode == 3:
+                temp = []
                 for word in line.split():
-                    surface += (int(word),)
-            elif counter == 4:
-                if x == 1:
-                    selatan = str(line)
-                elif x == 2:
-                    utara = str(line)
-                elif x == 3:
-                    barat = str(line)
-                elif x == 4:
-                    timur = str(line)
-                elif x == 5:
-                    atas = str(line)
-                x += 1
-            iterator -= 1
-            if counter == 1:
-                # verticesTemp.append(vertex)
-                verticesTemp += (vertex, )
-            elif counter == 2:
-                # edgesTemp.append(edge)
-                edgesTemp += (edge, )
-            elif counter == 3:
-                # surfacesTemp.append(surface)
-                surfacesTemp += (surface, )
-            if (iterator < 1):
-                counter += 1
-                if counter > 4:
-                    counter = 1
-                    x = 1
-                    tempObject = gedung3D(verticesTemp, edgesTemp, surfacesTemp, selatan, utara, barat, timur, atas)
-                    kumpulan.append(tempObject)
-                first = True
-
-#menampilkan seluruh bentuk berdasarkan kumpulan titik
-def printKumpulan(kumpulan):
-    for vertices in kumpulan:
-        glBegin(GL_POLYGON)
-        for vertex in vertices:
-            glVertex2fv(vertex)
-        glEnd()
-
+                    temp.append(int(word))
+                surfaces.append(temp)
+            elif mode == 4:
+                if rowRemaining == 5:
+                    selatan = loadImage(str(line))
+                elif rowRemaining == 4:
+                    utara = loadImage(str(line))
+                elif rowRemaining == 3:
+                    barat = loadImage(str(line))
+                elif rowRemaining == 2:
+                    timur = loadImage(str(line))
+                elif rowRemaining == 1:
+                    atas = loadImage(str(line))
+            rowRemaining -= 1
+            if (rowRemaining < 1):
+                mode += 1
+                newMode = True
+            if mode > 4: # new building
+                mode = 1
+                kumpulanGedung3D.append(gedung3D(vertices, edges, surfaces, selatan, utara, barat, timur, atas))
 
 def main():
-    global ID
-
-    # kumpulanGedung = []
-    kumpulanGedung3D = []
-    # kumpulanPohon = []
-    # kumpulanJalan = []
-    #migrasi file eksternal ke memori
-    # loadFile(kumpulanGedung,"resources/gedung.txt")
-    loadFile(kumpulanGedung3D, "resources/gedung3d.txt")
-    # loadFile(kumpulanPohon,"resources/pohon.txt")
-    # loadFile(kumpulanJalan,"resources/jalan.txt")
-    # test = gedung2D("test",kumpulanGedung[0])
-    pygame.init()
+    # load file
+    loadFile("resources/gedung3d.txt")
+    # init pygame
     display = (800, 600)
+    pygame.init()
     pygame.display.set_mode(display, DOUBLEBUF|OPENGL)
-
     gluPerspective(45, (display[0]/display[1]), 0.1, 75.0)
-
     glTranslatef(-20, -25, -75)
-
+    # infinite loop until quit
     while True:
+        # keyboard / mouse event
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-            if event.type == pygame.KEYDOWN:
+            elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     glTranslatef(0.5, 0, 0)
-                if event.key == pygame.K_RIGHT:
+                elif event.key == pygame.K_RIGHT:
                     glTranslatef(-0.5, 0, 0)
-
-                if event.key == pygame.K_UP:
+                elif event.key == pygame.K_UP:
                     glTranslatef(0, -1, 0)
-                if event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_DOWN:
                     glTranslatef(0, 1, 0)
-
-                if event.key == pygame.K_a:
+                elif event.key == pygame.K_a:
                     glRotatef(5, 0, -1, 0)
-                if event.key == pygame.K_d:
+                elif event.key == pygame.K_d:
                     glRotatef(5, 0, 1, 0)
-
-                if event.key == pygame.K_w:
+                elif event.key == pygame.K_w:
                     glRotatef(5, -1, 0, 0)
-                if event.key == pygame.K_s:
+                elif event.key == pygame.K_s:
                     glRotatef(5, 1, 0, 0)
-
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 4:
                     glTranslatef(0, 0, 1.0)
-
-                if event.button == 5:
+                elif event.button == 5:
                     glTranslatef(0, 0, -1.0)
-
+        # redraw
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
-        # printKumpulan(kumpulanGedung)
-        for obj in kumpulanGedung3D:
-            # print(obj.vertices)
-            # print(obj.edges)
-            # print(obj.surfaces)
-            obj.print3D()
-        #printKumpulan(kumpulanPohon)
-        #printKumpulan(kumpulanJalan)
+        for gedung in kumpulanGedung3D:
+            gedung.print3D()
         pygame.display.flip()
-        pygame.time.wait(10)
+        pygame.time.wait(100)
 
+# main program
 main()
