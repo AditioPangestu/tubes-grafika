@@ -59,8 +59,8 @@ def DrawGLScene():
         #glRotatef(Z_AXIS,0.0,0.0,1.0)
          
         # Draw Cube (multiple quads)
-        loadImage('resources/cc timur/right.jpg')
-        '''FRONT'''
+        loadImage('resources/2cc/selatan.jpg')
+        '''SELATAN'''
         glBegin(GL_QUADS);
         glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube, -Y_cube,  Z_cube);
         glTexCoord2f(1.0, 0.0); glVertex3f( X_cube, -Y_cube,  Z_cube);
@@ -69,7 +69,7 @@ def DrawGLScene():
         glEnd();
 
         '''BACK'''
-        loadImage('resources/cc timur/left.jpg')
+        loadImage('resources/2cc/utara.jpg')
         glBegin(GL_QUADS);
         glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube, -Y_cube, -Z_cube);
         glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube,  Y_cube, -Z_cube);
@@ -89,7 +89,7 @@ def DrawGLScene():
  #        glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube, -Y_cube,  Z_cube);
 
         '''RIGHT'''
-        loadImage('resources/cc timur/back.jpg')
+        loadImage('resources/2cc/timur.jpg')
         glBegin(GL_QUADS);
         glTexCoord2f(0.0, 0.0); glVertex3f( X_cube, -Y_cube,  Z_cube);
         glTexCoord2f(1.0, 0.0); glVertex3f( X_cube, -Y_cube, -Z_cube);
@@ -98,7 +98,7 @@ def DrawGLScene():
         glEnd();
 
         '''LEFT'''
-        loadImage('resources/cc timur/front.jpg')
+        loadImage('resources/2cc/barat.jpg')
         glBegin(GL_QUADS);
         glTexCoord2f(0.0, 0.0); glVertex3f(-X_cube, -Y_cube, Z_cube);
         glTexCoord2f(1.0, 0.0); glVertex3f(-X_cube, -Y_cube, -Z_cube);
@@ -148,7 +148,6 @@ def main():
     glutIdleFunc(DrawGLScene)
     glutKeyboardFunc(keyPressed)
     InitGL(640, 480)
-    loadImage('resources/cc timur/right.jpg')
     glutMainLoop()
  
 if __name__ == "__main__":
