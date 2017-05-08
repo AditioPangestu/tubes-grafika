@@ -144,10 +144,6 @@ def main():
     glutIdleFunc(DrawGLScene)
     glutKeyboardFunc(keyPressed)
     InitGL(640, 480)
-<<<<<<< HEAD:app_3d_texture.py
-=======
-    # loadImage('resources/2cc/barat.jpg')
->>>>>>> da6cd1e59d18253c53bc18e5d0f9483f9bee2256:appTest.py
     glutMainLoop()
  
 if __name__ == "__main__":
