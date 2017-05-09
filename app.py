@@ -6,6 +6,7 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 
 kumpulanGedung3D = []
+textures = []
 
 #Kelas untuk menyimpan gambar dari file ke memori
 class Gambar:
@@ -41,19 +42,23 @@ class gedung3D:
             elif counter == 6:
                 drawImage(self.timur)
             # tempel ke koordinat
-            if counter != 1:
-                glBegin(GL_QUADS)
-                for vertex in surface:
-                    glVertex3fv(self.vertices[vertex])
-                counter += 1
-                glEnd()
+            glBegin(GL_QUADS)
+            TexCoord = [(0.0,0.0),(1.0,0.0),(1.0,1.0),(0.0,1.0)]
+            index = 0
+            for vertex in surface:
+                glTexCoord2fv(TexCoord[index])
+                index += 1
+                glVertex3fv(self.vertices[vertex])
+            counter += 1
+            glEnd()
         # gambar rusuk kubus (?)
+"""
         glBegin(GL_LINES)
         for edge in self.edges:
             for vertex in edge:
                 glVertex3fv(self.vertices[vertex])
         glEnd()
-
+"""
 def loadImage(filename = ''):
     image = pygame.image.load('resources/' + filename)
     ix = image.get_width()
@@ -61,8 +66,8 @@ def loadImage(filename = ''):
     return Gambar(pygame.image.tostring(image, "RGBA", 1), ix, iy)
 
 def drawImage(image = None):
-    ID = 0
-    glBindTexture(GL_TEXTURE_2D, ID)
+    texture = 0
+    glBindTexture(GL_TEXTURE_2D, texture)
     glPixelStorei(GL_UNPACK_ALIGNMENT,1)
     glTexImage2D(GL_TEXTURE_2D, 0, 3, image.x, image.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.image)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP)
@@ -101,7 +106,7 @@ def loadFile(namafile = ''):
             if mode == 1:
                 temp = []
                 for word in line.split():
-                    temp.append(float(word) / 10)
+                    temp.append(float(word) / 20)
                 vertices.append(tuple(temp))
             elif mode == 2:
                 temp = []
@@ -132,6 +137,22 @@ def loadFile(namafile = ''):
                 mode = 1
                 kumpulanGedung3D.append(gedung3D(vertices, edges, surfaces, selatan, utara, barat, timur, atas))
 
+def InitGL(Width, Height):
+    glClearColor(0.0, 0.0, 0.0, 0.0)
+    glClearDepth(1.0)
+    glDepthFunc(GL_LESS)
+    glEnable(GL_DEPTH_TEST)
+    glShadeModel(GL_SMOOTH)
+    glMatrixMode(GL_PROJECTION)
+    glLoadIdentity()
+    gluPerspective(45.0, float(Width)/float(Height), 0.1, 100.0)
+    glMatrixMode(GL_MODELVIEW)
+    # initialize texture mapping
+    glEnable(GL_TEXTURE_2D)
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
+
 def main():
     # load file
     loadFile("resources/gedung3d.txt")
@@ -139,7 +160,7 @@ def main():
     display = (800, 600)
     pygame.init()
     pygame.display.set_mode(display, DOUBLEBUF|OPENGL)
-    gluPerspective(45, (display[0]/display[1]), 0.1, 75.0)
+    InitGL(display[0],display[1])
     glTranslatef(-20, -25, -75)
     # infinite loop until quit
     while True:

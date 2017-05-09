@@ -3,9 +3,9 @@ from OpenGL.GLUT import *
 from OpenGL.GLU import *
 from PIL import Image
 import pygame
-    
+
 ESCAPE = '\033'
- 
+
 window = 0
 ID = 0
 
@@ -17,18 +17,18 @@ Z_AXIS = 0.0
 DIRECTION = 1
 
 #cube
-X_cube = 2.0
-Y_cube = 1.0
-Z_cube = 1.0
+X_cube = 20.0
+Y_cube = 10.0
+Z_cube = 10.0
 
 image = []
 
 def InitGL(Width, Height):
     glClearColor(0.0, 0.0, 0.0, 0.0)
-    glClearDepth(1.0) 
+    glClearDepth(1.0)
     glDepthFunc(GL_LESS)
     glEnable(GL_DEPTH_TEST)
-    glShadeModel(GL_SMOOTH)   
+    glShadeModel(GL_SMOOTH)
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
     gluPerspective(45.0, float(Width)/float(Height), 0.1, 100.0)
@@ -38,22 +38,22 @@ def InitGL(Width, Height):
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
- 
+
 def keyPressed(*args):
     if args[0] == ESCAPE:
         sys.exit()
- 
- 
+
+
 def DrawGLScene():
         global X_AXIS,Y_AXIS,Z_AXIS
- 
+
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
         glLoadIdentity()
         glTranslatef(0.0,0.0,-6.0)
         #glRotatef(X_AXIS,1.0,0.0,0.0)
         glRotatef(Y_AXIS,0.0,1.0,0.0)
         #glRotatef(Z_AXIS,0.0,0.0,1.0)
-         
+
        # Draw Cube (multiple quads)
         loadImage('resources/2cc/selatan.jpg')
         '''SELATAN'''
@@ -101,14 +101,14 @@ def DrawGLScene():
         glTexCoord2f(1.0, 1.0); glVertex3f(-X_cube,  Y_cube, -Z_cube);
         glTexCoord2f(0.0, 1.0); glVertex3f(-X_cube,  Y_cube, Z_cube);
         glEnd();
- 
+
         X_AXIS = X_AXIS - 2
         Z_AXIS = Z_AXIS - 2
         Y_AXIS = Y_AXIS - 2
- 
+
         glutSwapBuffers()
- 
- 
+
+
 def loadImage(filename):
       image = pygame.image.load(str(filename))
       ix = image.get_width()
@@ -128,7 +128,7 @@ def loadImage(filename):
       glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
 
       return ID
-      
+
 def main():
     global window
     global ID
@@ -145,6 +145,6 @@ def main():
     glutKeyboardFunc(keyPressed)
     InitGL(640, 480)
     glutMainLoop()
- 
+
 if __name__ == "__main__":
         main()
