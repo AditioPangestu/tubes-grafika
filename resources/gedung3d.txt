@@ -663,3 +663,38 @@ perpus/utara.jpg
 perpus/barat.jpg
 perpus/timur.jpg
 perpus/atas.jpg
+8
+0 0 0
+484 0 0
+484 568 0
+0 568 0
+0 0 -10
+484 0 -10
+484 568 -10
+0 568 -10
+12
+0 1
+1 2
+2 3
+3 0
+4 5
+5 6
+6 7
+7 4
+0 4
+1 5
+2 6
+3 7
+6
+0 1 2 3
+4 5 6 7
+0 1 5 4
+1 2 6 5
+2 3 7 6
+3 0 4 7
+5
+ground/selatan.jpg
+ground/utara.jpg
+ground/barat.jpg
+ground/timur.jpg
+ground/atas.jpg
