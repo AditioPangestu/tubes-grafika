@@ -166,18 +166,21 @@ def main():
     while True:
         # keyboard / mouse event
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    glTranslatef(0.5, 0, 0)
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    exit()
+                elif event.key == pygame.K_LEFT:
+                    glTranslatef(1, 0, 0)
                 elif event.key == pygame.K_RIGHT:
-                    glTranslatef(-0.5, 0, 0)
+                    glTranslatef(-1, 0, 0)
                 elif event.key == pygame.K_UP:
                     glTranslatef(0, -1, 0)
                 elif event.key == pygame.K_DOWN:
                     glTranslatef(0, 1, 0)
+                elif event.key == pygame.K_PAGEUP:
+                    glTranslatef(0, 0, -1)
+                elif event.key == pygame.K_PAGEDOWN:
+                    glTranslatef(0, 0, 1)
                 elif event.key == pygame.K_a:
                     glRotatef(5, 0, -1, 0)
                 elif event.key == pygame.K_d:
@@ -186,6 +189,10 @@ def main():
                     glRotatef(5, -1, 0, 0)
                 elif event.key == pygame.K_s:
                     glRotatef(5, 1, 0, 0)
+                elif event.key == pygame.K_z:
+                    glRotatef(5, 0, 0, 1)
+                elif event.key == pygame.K_x:
+                    glRotatef(5, 0, 0, -1)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 4:
                     glTranslatef(0, 0, 1.0)
