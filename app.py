@@ -4,6 +4,7 @@ from pygame.locals import *
 from PIL import Image
 from OpenGL.GL import *
 from OpenGL.GLU import *
+import OpenGL.GL.shaders
 
 kumpulanGedung3D = []
 textures = []
@@ -165,7 +166,7 @@ def InitGL(Width, Height):
     fragment_shader = """
     #version 330
     void main() {
-        gl_FragColor = vec4(1.0f, 0.0f, 0.0f, 1.0)
+        gl_FragColor = vec4(1.0f, 0.0f, 0.0f, 1.0);
     }
     """
 
