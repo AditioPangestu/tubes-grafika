@@ -153,6 +153,26 @@ def InitGL(Width, Height):
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL)
 
+    vertex_shader = """
+    #version 330
+    in vec4 position;
+
+    void main() {
+        gl_Position = position;
+    }
+    """
+
+    fragment_shader = """
+    #version 330
+    void main() {
+        gl_FragColor = vec4(1.0f, 0.0f, 0.0f, 1.0)
+    }
+    """
+
+    shader = OpenGL.GL.shaders.compileProgram(OpenGL.GL.shaders.compileShader(vertex_shader, GL_VERTEX_SHADER),
+        OpenGL.GL.shaders.compileShader(fragment_shader, GL_FRAGMENT_SHADER))
+
+
 def main():
     # load file
     loadFile("resources/gedung3d.txt")
