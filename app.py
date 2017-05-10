@@ -52,13 +52,13 @@ class gedung3D:
             counter += 1
             glEnd()
         # gambar rusuk kubus (?)
-"""
+
         glBegin(GL_LINES)
         for edge in self.edges:
             for vertex in edge:
                 glVertex3fv(self.vertices[vertex])
         glEnd()
-"""
+
 def loadImage(filename = ''):
     image = pygame.image.load('resources/' + filename)
     ix = image.get_width()

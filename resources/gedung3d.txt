@@ -697,4 +697,4 @@ ground/selatan.jpg
 ground/utara.jpg
 ground/barat.jpg
 ground/timur.jpg
-ground/atas.jpg
+ground/atas-earth.jpg
